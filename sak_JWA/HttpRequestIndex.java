@@ -1,10 +1,6 @@
-import java.net.URL;
-import java.net.URI;
-import java.net.URLConnection;
+import java.net.*;
 import java.io.*;
 import java.util.*;
-import java.nio.file.*;
-import java.*;
 
 
 public class HttpRequestIndex{
@@ -32,6 +28,7 @@ public class HttpRequestIndex{
 		} catch(Exception e){
 			returnValue = false;
 			System.out.println("An exception occured in HttpRequestIndex");
+			e.printStackTrace();
 			System.out.println("URL: " +requestURL);
 		}
 
@@ -48,21 +45,29 @@ public class HttpRequestIndex{
 
 	public void List(){
 		
-		
-		URL myURL = new URL(requestURL);
-		URLConnection myConnection = myURL.openConnection();
-		URI myURI = new URI(requestURL);
+		try{
+			URL myURL = new URL(requestURL);
+			URLConnection myConnection = myURL.openConnection();
+			URI myURI = new URI("file:/"+requestURL);
+			System.out.println(myURI);
 
+			File folder = new File(myURI);
+			String[] fileList = folder.list();
 
-		
+			for (String file:fileList){
+				System.out.println(file);
 
-		try (Stream<Path> walk = Files.walk(Paths.get(myURI))){
-			List<String> result = walk.filter(Files::isRegularFile)
-				.map(x -> x.toString()).collect(Collectors.toList());
-			result.forEach(System.out::println);
-		}catch (IOException e){
+			}
+		}catch(Exception e){
+			System.out.println("An exception occured in HttpRequestIndex\n");
 			e.printStackTrace();
+			System.out.print(e);
+			System.out.println("\nURL: " +requestURL);
+
 		}
+
+
+
 	}
 
 	public static void main(String[] args){
