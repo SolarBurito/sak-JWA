@@ -45,9 +45,9 @@ public class HttpRequest {
         return returnValue;
     }
 
-    public static void main(String args) {
+    public static void main(String[] args) {
         HttpRequest request = new HttpRequest();
-        if (request.readURL(args)) {
+        if (request.readURL(args[0])) {
             System.out.println(request);
         }      
     }
