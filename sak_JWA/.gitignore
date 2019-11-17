@@ -2,3 +2,10 @@
 /HttpRequestIndex.class
 /module-info.class
 /sak.class
+/OneSecondSleeper.class
+/Sleep.class
+/SleepFast.class
+/FastSleeper.class
+/SleepFastImplementsRunnable.class
+/FastSleeperIR.class
+/JSONValidateIndex.class

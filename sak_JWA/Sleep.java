@@ -23,7 +23,12 @@ public class Sleep{
 
 
 		OneSecondSleeper sleeper0 = new OneSecondSleeper(0);
+		OneSecondSleeper sleeper1 = new OneSecondSleeper(1);
+
 
 		sleeper0.sleep();
+		sleeper1.sleep();
+		System.out.println("Elapsed time = " + (System.currentTimeMillis()-start) + "\n");
+
 	}
 }
