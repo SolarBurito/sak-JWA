@@ -1,6 +1,4 @@
-{
-	"firstName": "James",
-	"lastName" : "Archey",
-	"major": "Computer Science",
-	"classification":"Senior"
-}
+[
+    {"name" : "James Archey","Email" : "jameswarchey@lewisu.edu","ContactURL":"https://sak-jwa.azurewebsites.net/my-info.json"},
+    {"name" : "Spider-Man", "Email" : "WebSlinger1963@oscorp.com", "ContactURL" : "https://sak-jwa.azurewebsites.net/spider-info.json"}
+]

@@ -1,0 +1,10 @@
+{
+    "firstName" : "Peter",
+    "lastName" : "Parker",
+    "preferredName" : "Spider-Man",
+    "email" : "WebSlinger1963@dailybugle.com",
+    "city" : "New York City",
+    "state" : "NY",
+    "zip": "10001",
+    "occupation" : "Photographer"
+}
