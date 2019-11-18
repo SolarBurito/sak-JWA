@@ -23,7 +23,7 @@ class FastSleeper extends Thread{
 }
 
 public class SleepFast{
-	public static void main(String[] args) {
+	public static void main() {
 		System.out.println("\nNon-Threaded Sleep");
 		long start = System.currentTimeMillis();
 

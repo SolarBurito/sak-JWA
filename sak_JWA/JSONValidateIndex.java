@@ -4,6 +4,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import org.json.*;
+import java.time.*;
 
 
 /**
@@ -128,8 +129,13 @@ public class JSONValidateIndex{
 	}
 
 	public static void main(String[] args){
+		long start = System.currentTimeMillis();
+		
 		JSONValidateIndex request = new JSONValidateIndex(args[0]);
 		request.List();
+		
+		long timeTaken = System.currentTimeMillis() - start;
+		System.out.println("\n\nExecution Time : " + timeTaken);
 
 	}
 }

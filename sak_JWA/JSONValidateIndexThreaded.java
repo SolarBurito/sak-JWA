@@ -4,6 +4,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import org.json.*;
+import java.time.*;
 
 
 /**
@@ -16,9 +17,10 @@ import org.json.*;
 
 
 
-public class JSONValidateIndexThreaded{
+public class JSONValidateIndexThreaded extends Thread{
 	private String requestURL;
 	protected ArrayList<String> urlContent;
+	protected static ArrayList<JSONValidateIndexThreaded> validateList  = new ArrayList<JSONValidateIndexThreaded>();
 	
 	JSONValidateIndexThreaded(){
 		requestURL = "";
@@ -77,22 +79,17 @@ public class JSONValidateIndexThreaded{
 					String key = (String) keys.next();
 					String content = tempJSON.getString(key);
 					
-					//If the content of any key contains "http" then create a new HttpRequest of the found url, and validates it.
+					//If the content of any key contains "http" then adds the request to an ArrayList
 					if (content.contains("http")) {
 						JSONValidateIndexThreaded tempReq = new JSONValidateIndexThreaded(content);
-						try {
-							JSONObject checkJSON = new JSONObject(tempReq.toString());
-							Validate(checkJSON, tempReq);
-						}catch(Exception e) {
-							System.out.println("Error occured while attempting to parse JSON data from " + content + " from " + tempJSON.getString("Name") + "---" + tempJSON.getString("Email"));
-						}
-
+						validateList.add(tempReq);
 					}
 				}
 			}
 		}catch(JSONException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void Validate(JSONObject myJSON, JSONValidateIndexThreaded myReq) {
@@ -126,10 +123,38 @@ public class JSONValidateIndexThreaded{
 
 		
 	}
+	
+	public void run() {
+		try {
+			JSONObject myJSON = new JSONObject(this.toString());
+			Validate(myJSON, this);
+		}catch(Exception e) {
+			System.out.println("Error parsing JSON file from " + this.requestURL);
+		}
+
+		
+	}
 
 	public static void main(String[] args){
+		long start = System.currentTimeMillis();
 		JSONValidateIndexThreaded request = new JSONValidateIndexThreaded(args[0]);
 		request.List();
+		
+		//Starts each validation
+		for (JSONValidateIndexThreaded j:validateList) {
+			j.start();
+		}
+		
+		try {
+			for (JSONValidateIndexThreaded j:validateList) {
+				j.join();
+			}
+		}catch(Exception e) {
+			System.out.println("Error joining threads");
+		}
+		
+		long timeTaken = System.currentTimeMillis() - start;
+		System.out.println("\n\nExecution time: " + timeTaken);
 
 	}
 }

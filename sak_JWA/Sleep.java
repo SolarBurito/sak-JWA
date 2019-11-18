@@ -17,7 +17,7 @@ class OneSecondSleeper{
 }
 
 public class Sleep{
-	public static void main(String[] args) {
+	public static void main() {
 		System.out.println("\nSleep");
 		long start = System.currentTimeMillis();
 

@@ -26,17 +26,23 @@ public class sak{
 			}
 
 			if (userIn.compareTo("help") == 0){
-				System.out.println("help\nHttpRequest\nHttpRequestIndex\n");
-				System.out.print("Examples:\nHttpReques [URL]\nHttpRequestIndex [URL]\n");
+				System.out.print("\nHttpReques [URL]\nHttpRequestIndex [URL]\nSleep\nSleepFast\nSleepFastImplementsRunnable\nJSONValidateIndex [URL]\nJSONValidateIndexThreaded [URL]\n");
 			}else if(cmd.compareTo("HttpRequest") == 0){
-				System.out.print("HttpRequest" + cmdArg);
 				HttpRequest.main(cmdArg);
 			}else if (cmd.compareTo("HttpRequestIndex") == 0){
-				System.out.print("HttpRequestIndex" + cmdArg);
 				HttpRequestIndex.main(cmdArg);
+			}else if(userIn.compareTo("Sleep") == 0) {
+				Sleep.main();
+			}else if(userIn.compareTo("SleepFast") == 0) {
+				SleepFast.main();
+			}else if(userIn.compareTo("SleepFastImplementsRunnable") == 0) {
+				SleepFastImplementsRunnable.main();
+			}else if (cmd.compareTo("JSONValidateIndex") == 0){
+				JSONValidateIndex.main(cmdArg);
+			}else if (cmd.compareTo("JSONValidateIndexThreaded") == 0){
+				JSONValidateIndexThreaded.main(cmdArg);
 			}else {
-				System.out.println("help\nHttpRequest\nHttpRequestIndex\n");
-				System.out.print("Examples:\nHttpReques [URL]\nHttpRequestIndex [URL]\n");
+				System.out.print("\nHttpReques [URL]\nHttpRequestIndex [URL]\nSleep\nSleepFast\nSleepFastImplementsRunnable\nJSONValidateIndex [URL]\nJSONValidateIndexThreaded [URL]\n");
 			}
 		}
 		scanner.close();
