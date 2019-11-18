@@ -6,5 +6,6 @@
     "city" : "New York City",
     "state" : "NY",
     "zip": "10001",
-    "occupation" : "Photographer"
+    "occupation" : "Photographer",
+    "seatLocation" : ""
 }

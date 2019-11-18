@@ -1,4 +1,11 @@
-[
-    {"name" : "James Archey","Email" : "jameswarchey@lewisu.edu","ContactURL":"https://sak-jwa.azurewebsites.net/my-info.json"},
-    {"name" : "Spider-Man", "Email" : "WebSlinger1963@oscorp.com", "ContactURL" : "https://sak-jwa.azurewebsites.net/spider-info.json"}
-]
+{
+    "firstName" : "James",
+    "lastName" : "Archey",
+    "preferredName" : "Jimmy",
+    "email" : "jameswarchey@lewisu.edu",
+    "city" : "Wilmington",
+    "state" : "IL",
+    "zip": "60481",
+    "occupation" : "Student",
+    "seatLocation" : "52"
+}
